@@ -28,8 +28,9 @@ Permite manejar rutas, peticiones HTTP y middlewares de forma sencilla y rápida
 ### 1. Cloná o descargá el repo
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repo.git
-cd tu-repo
+git clone https://github.com/jeesssik/Express-2025.git
+cd Express-2025
+y luego entrá a la carpeta del proyecto que quieras probar
 ```
 
 ### 2. Instalá las dependencias
