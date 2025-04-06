@@ -1,0 +1,85 @@
+{
+    "info": {
+      "name": "API Básica - Nombres",
+      "_postman_id": "1a2b3c4d-1234-5678-9101-abcdefabcdef",
+      "description": "Colección para probar GET, POST, PUT y DELETE en una API básica de nombres.",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "GET - Obtener todos los nombres",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3000/nombres",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["nombres"]
+          }
+        }
+      },
+      {
+        "name": "POST - Agregar un nombre",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"nombre\": \"Lucía\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:3000/nombres",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["nombres"]
+          }
+        }
+      },
+      {
+        "name": "PUT - Editar nombre (índice 1)",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"nombre\": \"Luisito\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:3000/nombres/1",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["nombres", "1"]
+          }
+        }
+      },
+      {
+        "name": "DELETE - Borrar nombre (índice 0)",
+        "request": {
+          "method": "DELETE",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3000/nombres/0",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["nombres", "0"]
+          }
+        }
+      }
+    ]
+  }
+  
