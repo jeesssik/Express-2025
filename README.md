@@ -35,7 +35,6 @@ y luego entrá a la carpeta del proyecto que quieras probar
 
 ### 2. Instalá las dependencias
 ```bash
-¿
 npm install
 ```
 ### 3. Ejecutá la API
