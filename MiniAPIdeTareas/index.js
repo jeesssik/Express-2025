@@ -4,7 +4,21 @@ const PORT = 3000;
 
 app.use(express.json()); // para poder leer JSON en POST y PUT
 
-let nombres = ['Ana', 'Luis', 'Carlos'];
+// array de objetos que son personas
+const nombres = [
+  { "nombre": "Juan",
+    "edad": 25,
+    "ciudad": "Buenos Aires" },
+  { "nombre": "Pedro",
+    "edad": 30,
+    "ciudad": "Córdoba" },
+  { "nombre": "María",
+    "edad": 28,
+    "ciudad": "Rosario" },
+  { "nombre": "Ana",
+    "edad": 22,
+    "ciudad": "Mendoza" }
+];
 
 app.get('/', (req, res) => {
     res.json('aca no hay nada che');
@@ -16,24 +30,34 @@ app.get('/nombres', (req, res) => {
 
 // POST - Agregar un nombre
 app.post('/nombres', (req, res) => {
-  const { nombre } = req.body;
+  const  nombre  = req.body;
   if (!nombre) return res.status(400).json({ error: 'Falta el nombre' });
 
   nombres.push(nombre);
   res.status(201).json({ mensaje: 'Nombre agregado', nombres });
 });
 
-// PUT - Modificar un nombre por índice
+// PUT - Modificar un dato por índice
 app.put('/nombres/:indice', (req, res) => {
   const indice = parseInt(req.params.indice);
-  const { nombre } = req.body;
+  const  dato  = req.body;
 
-  if (isNaN(indice) || !nombre || !nombres[indice]) {
-    return res.status(400).json({ error: 'Datos inválidos' });
-  }
+//la idea de este put es que en body se aclare el dato a modificar y el nuevo valor
+  
+    if (isNaN(indice) || !nombres[indice]) {
+      return res.status(404).json({ error: 'Índice no válido' });
+    }
+  
+    // Modificar el dato en el índice especificado
+    for (const key in dato) {
+      if (nombres[indice].hasOwnProperty(key)) {
+        nombres[indice][key] = dato[key];
+      }
+    }
+  
+    res.json({ mensaje: `Dato modificado`, nombres });
 
-  nombres[indice] = nombre;
-  res.json({ mensaje: 'Nombre actualizado', nombres });
+  
 });
 
 // DELETE - Borrar un nombre por índice
